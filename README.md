@@ -1,7 +1,8 @@
 # babel-plugin-react-directives
 
 Babel plugin that carries directives to React JSX:
-* `$if/$else`
+* `$if`
+* `$if / $else`
 
 ## Example use
 
