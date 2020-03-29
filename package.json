@@ -1,0 +1,20 @@
+{
+  "name": "babel-plugin-react-directives",
+  "version": "1.0.0",
+  "description": "Babel plugin that carries directives to React JSX: `$if/$else`",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damianc/gulp-javascript-pl.git"
+  },
+  "keywords": [
+    "babel", "babel-plugin", "react", "jsx"
+  ],
+  "author": "Damian Czapiewski (GH: @damianc)",
+  "license": "ISC",
+  "dependencies": {
+    "babel-types": "^6.26.0"
+  },
+  "devDependencies": {}
+}
