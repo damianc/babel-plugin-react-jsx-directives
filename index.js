@@ -4,12 +4,10 @@ const { hasDirective } = require('./utils');
 const DirectiveVisitor = {
 	JSXElement(path, state) {
 
-		switch(true) {
-			case hasDirective(path, '$if'):
-				transformIfDirective(path, state);
-				break;
+		if (hasDirective(path, '$if')) {
+			transformIfDirective(path, state);
 		}
-
+		
 	}
 };
 
