@@ -4,6 +4,12 @@ Babel plugin that carries directives to React JSX:
 * `$if`
 * `$if / $else`
 
+## Installation
+
+```
+npm i babel-plugin-react-jsx-directives
+```
+
 ## Example use
 
 ```
