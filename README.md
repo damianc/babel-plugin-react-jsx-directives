@@ -1,4 +1,4 @@
-# babel-plugin-react-directives
+# babel-plugin-react-jsx-directives
 
 Babel plugin that carries directives to React JSX:
 * `$if`
