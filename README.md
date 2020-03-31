@@ -1,5 +1,7 @@
 # babel-plugin-react-jsx-directives
 
+![GitHub last commit](https://img.shields.io/github/last-commit/damianc/babel-plugin-react-jsx-directives)
+
 Babel plugin that carries directives to React JSX:
 * `$if`
 * `$if / $else`
