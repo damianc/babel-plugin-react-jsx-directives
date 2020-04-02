@@ -6,10 +6,12 @@ const DirectiveVisitor = {
 
 		if (hasDirective(path, '$if')) {
 			d.transformIfDirective(path, state);
+			return;
 		}
 
 		if (hasDirective(path, '$for')) {
 			d.transformForDirective(path, state);
+			return;
 		}
 
 	}
