@@ -37,7 +37,6 @@ const DirectiveVisitor = {
 
 			/* else-if and else section */
 
-			const elseIfs = [];
 			let _else;
 
 			let nextElement = u.getNextElementSibling(path);
@@ -49,13 +48,29 @@ const DirectiveVisitor = {
 						_else = u.createJSXElementFromNode(nextElement.node, ['$else']);
 						nextElement.remove();
 						break;
+					} else if (u.hasDirective(nextElement, '$elseif')) {
+						let eiDirAttrs = nextElement.node.openingElement.attributes;
+						let eiAttrIdx = u.getDirectiveIndex(eiDirAttrs, '$elseif');
+						let eiCondition = eiDirAttrs[eiAttrIdx].value;
+						if (t.isJSXExpressionContainer(eiCondition)) {
+							let _ei = t.ifStatement(
+								eiCondition.expression,
+								t.returnStatement(
+									u.createJSXElementFromNode(nextElement.node, ['$elseif'])
+								)
+							);
+
+							nextElement.remove();
+							arrowIIFE.body.body.push(
+								_ei
+							);
+
+						}
 					}
+
 					nextElement = u.getNextElementSibling(nextElement);
 				} else break;
 			}
-
-
-
 
 			if (_else) {
 				arrowIIFE.body.body.push(
