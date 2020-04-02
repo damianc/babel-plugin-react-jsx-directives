@@ -2,8 +2,6 @@ const d = require('./directives');
 const Directive = require('./directives/enum');
 const { hasDirective } = require('./utils');
 
-/**/ const p = require('./directives/prefix');
-
 const DirectiveVisitor = {
 	JSXElement(path, state) {
 
@@ -14,6 +12,11 @@ const DirectiveVisitor = {
 
 		if (hasDirective(path, Directive.FOR)) {
 			d.transformForDirective(path, state);
+			return;
+		}
+
+		if (hasDirective(path, Directive.SWITCH)) {
+			d.transformSwitchDirective(path, state);
 			return;
 		}
 

@@ -9,6 +9,11 @@ function transformSwitchDirective(path, state) {
 			t.emptyStatement()
 		])
 	);
+
+	let switchDirAttrs = path.node.openingElement.attributes;
+	let switchAttrIdx = u.getDirectiveIndex(switchDirAttrs, Directive.SWITCH);
+	let switchExamined = switchDirAttrs[switchAttrIdx].value;
+	console.log('>>SWITCH>>', switchExamined);
 }
 
 module.exports = transformSwitchDirective;
