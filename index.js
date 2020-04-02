@@ -4,12 +4,12 @@ const { hasDirective } = require('./utils');
 const DirectiveVisitor = {
 	JSXElement(path, state) {
 
-		if (hasDirective(path, '$if')) {
+		if (hasDirective(path, 'rx-if')) {
 			d.transformIfDirective(path, state);
 			return;
 		}
 
-		if (hasDirective(path, '$for')) {
+		if (hasDirective(path, 'rx-for')) {
 			d.transformForDirective(path, state);
 			return;
 		}
