@@ -30,7 +30,7 @@ plugins: [
 ]
 ```
 
-## Example of `rx-if`
+## The `rx-if` Directive
 
 ```
 <p rx-if={this.state.status == 'available'}>
@@ -44,7 +44,7 @@ plugins: [
 </p>
 ```
 
-## Example of `rx-for`
+## The `rx-for` Directive
 
 ```
 <ul>
@@ -56,7 +56,7 @@ plugins: [
 </ul>
 ```
 
-## Example of `rx-switch`
+## The `rx-switch` Directive
 
 ```
 <div rx-switch={this.state.n}>
