@@ -1,16 +1,16 @@
 const t = require('babel-types');
 const u = require('../utils');
+const Directive = require('./enum');
 
 function transformForDirective(path, state) {
 	let forDirAttrs = path.node.openingElement.attributes;
-	let forAttrIdx = u.getDirectiveIndex(forDirAttrs, 'rx-for');
+	let forAttrIdx = u.getDirectiveIndex(forDirAttrs, Directive.FOR);
 	let forExpression = forDirAttrs[forAttrIdx].value;
 
 	if (
 		t.isJSXExpressionContainer(forExpression) &&
 		forExpression.expression.operator === 'in'
 	) {
-		console.log('>>>>', forExpression);
 		let forItem;
 		let forIndex;
 		let forArray = forExpression.expression.right;
@@ -31,7 +31,7 @@ function transformForDirective(path, state) {
 					forIndex ? [forItem, forIndex] : [forItem],
 					t.blockStatement([
 						t.returnStatement(
-							u.createJSXElementFromNode(path.node, ['rx-for'])
+							u.createJSXElementFromNode(path.node, [Directive.FOR])
 						)
 					])
 				)]

@@ -1,5 +1,6 @@
 const t = require('babel-types');
 const u = require('../utils');
+const Directive = require('./enum');
 
 function transformIfDirective(path, state) {
 	const arrowIIFE = t.arrowFunctionExpression(
@@ -10,13 +11,13 @@ function transformIfDirective(path, state) {
 	);
 
 	let ifDirAttrs = path.node.openingElement.attributes;
-	let ifAttrIdx = u.getDirectiveIndex(ifDirAttrs, 'rx-if');
+	let ifAttrIdx = u.getDirectiveIndex(ifDirAttrs, Directive.IF);
 	let ifCondition = ifDirAttrs[ifAttrIdx].value;
 
 	if (t.isJSXExpressionContainer(ifCondition)) {
 		/* if section */
 
-		let element = u.createJSXElementFromNode(path.node, ['rx-if']);
+		let element = u.createJSXElementFromNode(path.node, [Directive.IF]);
 		let _if = t.ifStatement(
 			ifCondition.expression,
 			t.returnStatement(element)
@@ -32,17 +33,20 @@ function transformIfDirective(path, state) {
 		while (true) {
 			if (!nextElement) break;
 
-			if (u.hasDirective(nextElement, 'rx-else') || u.hasDirective(nextElement, 'rx-elseif')) {
-				if (u.hasDirective(nextElement, 'rx-else')) {
-					_else = u.createJSXElementFromNode(nextElement.node, ['rx-else']);
+			if (
+				u.hasDirective(nextElement, Directive.ELSE) ||
+				u.hasDirective(nextElement, Directive.ELSEIF)
+			) {
+				if (u.hasDirective(nextElement, Directive.ELSE)) {
+					_else = u.createJSXElementFromNode(nextElement.node, [Directive.ELSE]);
 					nextElement.remove();
 					break;
-				} else if (u.hasDirective(nextElement, 'rx-elseif')) {
+				} else if (u.hasDirective(nextElement, Directive.ELSEIF)) {
 					let eiDirAttrs = nextElement.node.openingElement.attributes;
-					let eiAttrIdx = u.getDirectiveIndex(eiDirAttrs, 'rx-elseif');
+					let eiAttrIdx = u.getDirectiveIndex(eiDirAttrs, Directive.ELSEIF);
 					let eiCondition = eiDirAttrs[eiAttrIdx].value;
 					if (t.isJSXExpressionContainer(eiCondition)) {
-						let element = u.createJSXElementFromNode(nextElement.node, ['rx-elseif']);
+						let element = u.createJSXElementFromNode(nextElement.node, [Directive.ELSEIF]);
 						let _ei = t.ifStatement(
 							eiCondition.expression,
 							t.returnStatement(

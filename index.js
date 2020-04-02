@@ -1,15 +1,18 @@
 const d = require('./directives');
+const Directive = require('./directives/enum');
 const { hasDirective } = require('./utils');
+
+/**/ const p = require('./directives/prefix');
 
 const DirectiveVisitor = {
 	JSXElement(path, state) {
 
-		if (hasDirective(path, 'rx-if')) {
+		if (hasDirective(path, Directive.IF)) {
 			d.transformIfDirective(path, state);
 			return;
 		}
 
-		if (hasDirective(path, 'rx-for')) {
+		if (hasDirective(path, Directive.FOR)) {
 			d.transformForDirective(path, state);
 			return;
 		}
