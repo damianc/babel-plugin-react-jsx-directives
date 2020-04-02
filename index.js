@@ -5,17 +5,17 @@ const { hasDirective } = require('./utils');
 const DirectiveVisitor = {
 	JSXElement(path, state) {
 
-		if (hasDirective(path, Directive.IF)) {
+		if (hasDirective(path.node, Directive.IF)) {
 			d.transformIfDirective(path, state);
 			return;
 		}
 
-		if (hasDirective(path, Directive.FOR)) {
+		if (hasDirective(path.node, Directive.FOR)) {
 			d.transformForDirective(path, state);
 			return;
 		}
 
-		if (hasDirective(path, Directive.SWITCH)) {
+		if (hasDirective(path.node, Directive.SWITCH)) {
 			d.transformSwitchDirective(path, state);
 			return;
 		}
