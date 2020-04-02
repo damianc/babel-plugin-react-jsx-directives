@@ -7,6 +7,7 @@
 Babel plugin that carries directives to React JSX:
 * `$if`
 * `$if / $else`
+* `$if / $elseif / $else`
 
 ## Installation
 
@@ -23,4 +24,14 @@ npm i babel-plugin-react-jsx-directives
 <div $else>
     yo
 </div>
+
+<p $if={this.state.status == 'available'}>
+	I'm available
+</p>
+<p $elseif={this.state.status == 'busy'}>
+	I'm busy now
+</p>
+<p $else>
+	I'm certainly AFK
+</p>
 ```
