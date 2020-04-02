@@ -12,6 +12,15 @@ const Directive = {
 	},
 	get FOR() {
 		return getDirectiveProp('for');
+	},
+	get SWITCH() {
+		return getDirectiveProp('switch');
+	},
+	get CASE() {
+		return getDirectiveProp('case');
+	},
+	get DEFAULT() {
+		return getDirectiveProp('default');
 	}
 };
 

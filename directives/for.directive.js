@@ -31,7 +31,10 @@ function transformForDirective(path, state) {
 					forIndex ? [forItem, forIndex] : [forItem],
 					t.blockStatement([
 						t.returnStatement(
-							u.createJSXElementFromNode(path.node, [Directive.FOR])
+							u.createJSXElementFromNode(
+								path.node,
+								[Directive.FOR]
+							)
 						)
 					])
 				)]
