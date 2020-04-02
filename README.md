@@ -18,13 +18,6 @@ npm i babel-plugin-react-jsx-directives
 ## Example use
 
 ```
-<div $if={this.state.showHello}>
-    Hello
-</div>
-<div $else>
-    yo
-</div>
-
 <p $if={this.state.status == 'available'}>
 	I'm available
 </p>
