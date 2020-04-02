@@ -2,32 +2,80 @@ const t = require('babel-types');
 const u = require('../utils');
 
 function transformIfDirective(path, state) {
-	let attrs = path.node.openingElement.attributes;
-	let ifAttrIdx = u.getDirectiveIndex(attrs, '$if');
-	let ifCondition = attrs[ifAttrIdx].value;
-	
+	const arrowIIFE = t.arrowFunctionExpression(
+		[],
+		t.blockStatement([
+			t.emptyStatement()
+		])
+	);
+
+	let ifDirAttrs = path.node.openingElement.attributes;
+	let ifAttrIdx = u.getDirectiveIndex(ifDirAttrs, '$if');
+	let ifCondition = ifDirAttrs[ifAttrIdx].value;
+
 	if (t.isJSXExpressionContainer(ifCondition)) {
-		let alternateValue = t.nullLiteral();
+		/* if section */
 
-		let nextElem = u.getNextElementSibling(path);
-		if (nextElem) {
-			let nextElemAttrs = nextElem.node.openingElement.attributes;
-			let elseAttrIdx = u.getDirectiveIndex(nextElemAttrs, '$else');
-			if (elseAttrIdx != -1) {
-				let element = u.createJSXElementFromNode(nextElem.node, ['$else']);
-				alternateValue = element;
-				nextElem.remove();
-			}
-		}
-
- 		let element = u.createJSXElementFromNode(path.node, ['$if']);
-		let condExpr = t.conditionalExpression(
+		let element = u.createJSXElementFromNode(path.node, ['$if']);
+		let _if = t.ifStatement(
 			ifCondition.expression,
-			element,
-			alternateValue
+			t.returnStatement(element)
 		);
 
-		path.replaceWith(condExpr);
+		arrowIIFE.body.body.push(_if);
+
+		/* elseif section */
+
+		let _else;
+		let nextElement = u.getNextElementSibling(path);
+
+		while (true) {
+			if (!nextElement) break;
+
+			if (u.hasDirective(nextElement, '$else') || u.hasDirective(nextElement, '$elseif')) {
+				if (u.hasDirective(nextElement, '$else')) {
+					_else = u.createJSXElementFromNode(nextElement.node, ['$else']);
+					nextElement.remove();
+					break;
+				} else if (u.hasDirective(nextElement, '$elseif')) {
+					let eiDirAttrs = nextElement.node.openingElement.attributes;
+					let eiAttrIdx = u.getDirectiveIndex(eiDirAttrs, '$elseif');
+					let eiCondition = eiDirAttrs[eiAttrIdx].value;
+					if (t.isJSXExpressionContainer(eiCondition)) {
+						let element = u.createJSXElementFromNode(nextElement.node, ['$elseif']);
+						let _ei = t.ifStatement(
+							eiCondition.expression,
+							t.returnStatement(
+								element
+							)
+						);
+
+						nextElement.remove();
+						arrowIIFE.body.body.push(
+							_ei
+						);
+
+					}
+				}
+
+				nextElement = u.getNextElementSibling(nextElement);
+			} else break;
+		}
+
+		/* else section */
+
+		if (_else) {
+			arrowIIFE.body.body.push(
+				t.returnStatement(
+					_else
+				)
+			);
+		}
+
+		path.replaceWith(t.callExpression(
+			arrowIIFE,
+			[]
+		));
 	}
 }
 
