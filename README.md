@@ -6,10 +6,9 @@
 
 Babel plugin that carries directives to React JSX:
 * `rx-if`
-* `rx-if / rx-else`
-* `rx-if / rx-elseif`
-* `rx-if / rx-elseif / rx-else`
+* `rx-if / rx-else (rx-elseif)`
 * `rx-for`
+* `rx-switch / rx-case (rx-default)`
 
 ## Installation
 
@@ -41,4 +40,15 @@ npm i babel-plugin-react-jsx-directives
 		{idx + 1}. {book.title}
 	</li>
 </ul>
+```
+
+## Example of `rx-switch`
+
+```
+<div rx-switch={this.state.n}>
+	<p rx-case={1}>1</p>
+	<p rx-case={2}>2</p>
+	<p rx-case={3}>3</p>
+	<p rx-default>?</p>
+</div>
 ```
