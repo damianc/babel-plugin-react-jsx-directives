@@ -34,14 +34,14 @@ function transformIfDirective(path, state) {
 			if (!nextElement) break;
 
 			if (
-				u.hasDirective(nextElement, Directive.ELSE) ||
-				u.hasDirective(nextElement, Directive.ELSEIF)
+				u.hasDirective(nextElement.node, Directive.ELSE) ||
+				u.hasDirective(nextElement.node, Directive.ELSEIF)
 			) {
-				if (u.hasDirective(nextElement, Directive.ELSE)) {
+				if (u.hasDirective(nextElement.node, Directive.ELSE)) {
 					_else = u.createJSXElementFromNode(nextElement.node, [Directive.ELSE]);
 					nextElement.remove();
 					break;
-				} else if (u.hasDirective(nextElement, Directive.ELSEIF)) {
+				} else if (u.hasDirective(nextElement.node, Directive.ELSEIF)) {
 					let eiDirAttrs = nextElement.node.openingElement.attributes;
 					let eiAttrIdx = u.getDirectiveIndex(eiDirAttrs, Directive.ELSEIF);
 					let eiCondition = eiDirAttrs[eiAttrIdx].value;
