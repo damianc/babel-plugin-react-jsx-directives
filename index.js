@@ -7,11 +7,11 @@ const DirectiveVisitor = {
 		if (hasDirective(path, '$if')) {
 			transformIfDirective(path, state);
 		}
-		
+
 	}
 };
 
 module.exports = () => ({
-	name: 'react-directives',
+	name: 'react-jsx-directives',
 	visitor: DirectiveVisitor
 });
