@@ -22,6 +22,14 @@ npm i babel-plugin-react-jsx-directives
 |--------|------|-------------|
 | `prefix` | string | A prefix directives are preceded with; must consist of one or more lowercase characters. |
 
+#### Change of the Prefix
+
+```
+plugins: [
+	['babel-plugin-react-jsx-directives', { prefix: 'x' }]
+]
+```
+
 ## Example of `rx-if`
 
 ```
