@@ -9,6 +9,7 @@ Babel plugin that carries directives to React JSX:
 * `rx-if / rx-else (rx-elseif)`
 * `rx-for`
 * `rx-switch / rx-case (rx-default)`
+* `rx-class`
 
 ## Installation
 
@@ -65,4 +66,12 @@ plugins: [
 	<p rx-case={3}>3</p>
 	<p rx-default>?</p>
 </div>
+```
+
+## The `rx-class` Directive
+
+```
+<div className="box"
+	rx-class={{isError: this.state.isError, isOk: this.state.isOk}}
+>...</div>
 ```
