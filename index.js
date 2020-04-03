@@ -35,6 +35,11 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasDirective(path.node, Directive.CLASS)) {
+					d.transformClassDirective(path, state);
+					return;
+				}
+
 			}
 		}
 	};

@@ -21,6 +21,9 @@ const Directive = {
 	},
 	get DEFAULT() {
 		return getDirectiveProp('default');
+	},
+	get CLASS() {
+		return getDirectiveProp('class');
 	}
 };
 
