@@ -94,7 +94,6 @@ function transformClassDirective(path, state) {
 	});
 	if (classNameIdx !== -1) classDirAttrs.splice(classNameIdx, 1);
 	classDirAttrs.push(newClassNameProp);
-	// return console.log('>>>>>>>>>>>>>>>>>', classDirAttrs);
 
 	path.replaceWith(
 		u.createJSXElement(
