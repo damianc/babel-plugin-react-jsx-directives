@@ -11,8 +11,22 @@
   "keywords": [
     "babel",
     "babel-plugin",
+    "plugin",
+    "javascript",
+    "reactjs",
     "react",
-    "jsx"
+    "jsx",
+    "library",
+    "utils",
+    "helpers",
+    "directive",
+    "directives",
+    "attribute",
+    "props",
+    "collection",
+    "list",
+    "elements",
+    "iteration"
   ],
   "author": "Damian Czapiewski (GH: @damianc)",
   "license": "ISC",
