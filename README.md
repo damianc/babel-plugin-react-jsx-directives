@@ -10,6 +10,7 @@ Babel plugin that carries directives to React JSX:
 * `rx-for`
 * `rx-switch / rx-case (rx-default)`
 * `rx-class`
+* `rx-class-*`
 
 ## Installation
 
@@ -73,5 +74,13 @@ plugins: [
 ```
 <div className="box"
 	rx-class={{isError: this.state.isError, isOk: this.state.isOk}}
+>...</div>
+```
+
+## The `rx-class-*` Directive
+
+```
+<div className="message"
+	rx-class-fullscreen={this.state.device == 'mobile'}
 >...</div>
 ```

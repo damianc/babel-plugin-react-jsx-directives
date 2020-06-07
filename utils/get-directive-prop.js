@@ -4,4 +4,11 @@ function getDirectiveProp(directive) {
 	return p.getPrefix() + '-' + directive;
 }
 
-module.exports = getDirectiveProp;
+function getPartialDirectiveProp(directive, suffix) {
+	return p.getPrefix() + '-' + directive + '-' + suffix;
+}
+
+module.exports = {
+	getDirectiveProp,
+	getPartialDirectiveProp
+};

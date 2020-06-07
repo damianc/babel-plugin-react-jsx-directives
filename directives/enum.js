@@ -1,4 +1,4 @@
-const { getDirectiveProp } = require('../utils');
+const { getDirectiveProp, getPartialDirectiveProp } = require('../utils');
 
 const Directive = {
 	get IF() {
@@ -24,6 +24,9 @@ const Directive = {
 	},
 	get CLASS() {
 		return getDirectiveProp('class');
+	},
+	PARTIAL_CLASS(suffix) {
+		return getPartialDirectiveProp('class', suffix);
 	}
 };
 
