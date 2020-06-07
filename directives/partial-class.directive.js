@@ -6,7 +6,7 @@ function transformPartialClassDirective(path, state) {
 	let classDirAttrs = path.node.openingElement.attributes;
 	let classAttrIdx = u.getPartialDirectiveIndex(classDirAttrs, Directive.CLASS);
 	let classAttrName = classDirAttrs[classAttrIdx].name.name;
-	let [, className] = classAttrName.match(new RegExp(Directive.CLASS + '-(.+)'));
+	let [, className] = classAttrName.match(new RegExp(Directive.CLASS + '-(.+)$'));
 	let classExpression = classDirAttrs[classAttrIdx].value.expression;
 	let classNameAttr = classDirAttrs.find(prop => {
 		return prop.name.name == 'className';

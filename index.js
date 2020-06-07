@@ -45,6 +45,11 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasPartialDirective(path.node, Directive.STYLE)) {
+					d.transformPartialStyleDirective(path, state);
+					return;
+				}
+
 			}
 		}
 	};

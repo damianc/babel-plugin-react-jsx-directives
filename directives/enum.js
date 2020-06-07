@@ -27,6 +27,12 @@ const Directive = {
 	},
 	PARTIAL_CLASS(suffix) {
 		return getPartialDirectiveProp('class', suffix);
+	},
+	get STYLE() {
+		return getDirectiveProp('style');
+	},
+	PARTIAL_STYLE(suffix) {
+		return getPartialDirectiveProp('style', suffix);
 	}
 };
 

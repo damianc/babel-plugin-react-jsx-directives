@@ -11,6 +11,7 @@ Babel plugin that carries directives to React JSX:
 * `rx-switch / rx-case (rx-default)`
 * `rx-class`
 * `rx-class-*`
+* `rx-style-*`
 
 ## Installation
 
@@ -84,3 +85,29 @@ plugins: [
 	rx-class-fullscreen={this.state.device == 'mobile'}
 >...</div>
 ```
+
+## The `rx-style-*` Directive
+
+```
+<p rx-style-color={hasError ? 'red' : '#222'}>...</p>
+```
+
+```
+<p rx-style-fontSize="20">...</p>
+```
+
+> You can use `rx-style-font-size`, yet the plugin will turn it into `rx-style-fontSize`, eventually.
+
+* a unit can be specified:
+
+```
+<p rx-style-margin_px="25">...</p>
+```
+
+* use `percent` if a unit is meant to be `%`:
+
+```
+<div rx-style-width_percent="75">...</div>
+```
+
+> A unit can be specified if a value of the directive is just a string rather than expression.
