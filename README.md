@@ -9,6 +9,7 @@ Babel plugin that carries directives to React JSX:
 * `rx-if / rx-else (rx-elseif)`
 * `rx-for`
 * `rx-switch / rx-case (rx-default)`
+* `rx-params`
 * `rx-class`
 * `rx-class-*`
 * `rx-style-*`
@@ -67,6 +68,28 @@ plugins: [
 	<p rx-case={2}>2</p>
 	<p rx-case={3}>3</p>
 	<p rx-default>?</p>
+</div>
+```
+
+## The `rx-params` Directive
+
+The directive allows omitting callback when using render props.
+
+* instead of callback:
+
+```
+<div user={this.state.user}>
+	{(user, idx) => {
+		return <p>[{ idx }] { user.name } { user.surname } ({ user.age })</p>;
+	}}
+</div>
+```
+
+* you can use `rx-params` directive:
+
+```
+<div user={this.state.user} rx-params={(user, idx)}>
+	<p>[{ idx }] { user.name } { user.surname } ({ user.age })</p>
 </div>
 ```
 

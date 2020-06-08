@@ -33,6 +33,9 @@ const Directive = {
 	},
 	PARTIAL_STYLE(suffix) {
 		return getPartialDirectiveProp('style', suffix);
+	},
+	get PARAMS() {
+		return getDirectiveProp('params');
 	}
 };
 

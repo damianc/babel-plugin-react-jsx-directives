@@ -50,6 +50,11 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasDirective(path.node, Directive.PARAMS)) {
+					d.transformParamsDirective(path, state);
+					return;
+				}
+
 			}
 		}
 	};
