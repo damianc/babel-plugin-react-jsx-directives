@@ -60,6 +60,11 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasDirective(path.node, Directive.DYNAMIC_EVENT)) {
+					d.transformDynamicEventDirective(path, state);
+					return;
+				}
+
 			}
 		}
 	};

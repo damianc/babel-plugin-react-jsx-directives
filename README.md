@@ -5,15 +5,16 @@
 ![high usability](https://img.shields.io/badge/usability-%E2%98%85%20high-fa0)
 
 Babel plugin that carries directives to React JSX:
-* `rx-if`
-* `rx-if / rx-else (rx-elseif)`
-* `rx-for`
-* `rx-switch / rx-case (rx-default)`
-* `rx-params`
-* `rx-class`
-* `rx-class-*`
-* `rx-style-*`
-* `rx-dynamic-prop`
+* [`rx-if`](#the-rx-if-directive)
+* [`rx-if / rx-else (rx-elseif)`](#the-rx-if-directive)
+* [`rx-for`](#the-rx-for-directive)
+* [`rx-switch / rx-case (rx-default)`](#the-rx-switch-directive)
+* [`rx-params`](#the-rx-params-directive)
+* [`rx-class`](#the-rx-class-directive)
+* [`rx-class-*`](#the-rx-class--directive)
+* [`rx-style-*`](#the-rx-style--directive)
+* [`rx-dynamic-prop`](#the-rx-dynamic-prop-directive)
+* [`rx-dynamic-event`](#the-rx-dynamic-event-directive)
 
 ## Installation
 
@@ -145,3 +146,13 @@ The directive allows omitting callback when using render props.
 ```
 
 > It's like `:[propToBind]="valueForProp"` directive known from the Vue framework.
+
+## The `rx-dynamic-event` Direcitve
+
+```
+<div rx-dynamic-event={[eventToListen, eventsHandler]}>
+	...
+</div>
+```
+
+> It's like `@[eventToListen]="eventsHandler"` directive known from the Vue framework.

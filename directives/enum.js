@@ -39,6 +39,9 @@ const Directive = {
 	},
 	get DYNAMIC_PROP() {
 		return getDirectiveProp('dynamic-prop');
+	},
+	get DYNAMIC_EVENT() {
+		return getDirectiveProp('dynamic-event');
 	}
 };
 
