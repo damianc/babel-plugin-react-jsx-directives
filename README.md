@@ -147,7 +147,7 @@ The directive allows omitting callback when using render props.
 
 > It's like `:[propToBind]="valueForProp"` directive known from the Vue framework.
 
-## The `rx-dynamic-event` Direcitve
+## The `rx-dynamic-event` Directive
 
 ```
 <div rx-dynamic-event={[eventToListen, eventsHandler]}>
