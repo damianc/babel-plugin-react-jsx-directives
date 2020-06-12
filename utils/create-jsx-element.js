@@ -7,7 +7,7 @@ function createJSXElement(name, attrs, children, excludedAttrs) {
 	if (excludedAttrs) {
 		for (let attr of excludedAttrs) {
 			let attrIndex = elementAttrs.findIndex(a => {
-				return a.name.name === attr;
+				return a.name ? a.name.name === attr : false;
 			});
 			if (attrIndex != -1) elementAttrs.splice(attrIndex, 1);
 		}

@@ -55,6 +55,11 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasDirective(path.node, Directive.DYNAMIC_PROP)) {
+					d.transformDynamicPropDirective(path, state);
+					return;
+				}
+
 			}
 		}
 	};

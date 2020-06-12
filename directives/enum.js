@@ -36,6 +36,9 @@ const Directive = {
 	},
 	get PARAMS() {
 		return getDirectiveProp('params');
+	},
+	get DYNAMIC_PROP() {
+		return getDirectiveProp('dynamic-prop');
 	}
 };
 
