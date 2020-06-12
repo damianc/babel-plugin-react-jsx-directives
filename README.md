@@ -7,12 +7,14 @@
 Babel plugin that carries directives to React JSX:
 * [`rx-if`](#the-rx-if-directive)
 * [`rx-if / rx-else (rx-elseif)`](#the-rx-if-directive)
+* [`rx-show`](#the-rx-show-directive)
+* [`rx-hide`](#the-rx-hide-directive)
 * [`rx-for`](#the-rx-for-directive)
 * [`rx-switch / rx-case (rx-default)`](#the-rx-switch-directive)
-* [`rx-params`](#the-rx-params-directive)
 * [`rx-class`](#the-rx-class-directive)
 * [`rx-class-*`](#the-rx-class--directive)
 * [`rx-style-*`](#the-rx-style--directive)
+* [`rx-params`](#the-rx-params-directive)
 * [`rx-dynamic-prop`](#the-rx-dynamic-prop-directive)
 * [`rx-dynamic-event`](#the-rx-dynamic-event-directive)
 
@@ -50,6 +52,22 @@ plugins: [
 </p>
 ```
 
+## The `rx-show` Directive
+
+```
+<div rx-show={operationPerformed}>
+	Operation has finished successfully.
+</div>
+```
+
+## The `rx-hide` Directive
+
+```
+<div rx-hide={errors.length === 0}>
+	form contains errors
+</div>
+```
+
 ## The `rx-for` Directive
 
 ```
@@ -70,28 +88,6 @@ plugins: [
 	<p rx-case={2}>2</p>
 	<p rx-case={3}>3</p>
 	<p rx-default>?</p>
-</div>
-```
-
-## The `rx-params` Directive
-
-The directive allows omitting callback when using render props.
-
-* instead of callback:
-
-```
-<div user={this.state.user}>
-	{(user, idx) => {
-		return <p>[{ idx }] { user.name } { user.surname } ({ user.age })</p>;
-	}}
-</div>
-```
-
-* you can use `rx-params` directive:
-
-```
-<div user={this.state.user} rx-params={(user, idx)}>
-	<p>[{ idx }] { user.name } { user.surname } ({ user.age })</p>
 </div>
 ```
 
@@ -136,6 +132,28 @@ The directive allows omitting callback when using render props.
 ```
 
 > A unit can be specified if a value of the directive is just a string rather than expression.
+
+## The `rx-params` Directive
+
+The directive allows omitting callback when using render props.
+
+* instead of callback:
+
+```
+<div user={this.state.user}>
+	{(user, idx) => {
+		return <p>[{ idx }] { user.name } { user.surname } ({ user.age })</p>;
+	}}
+</div>
+```
+
+* you can use `rx-params` directive:
+
+```
+<div user={this.state.user} rx-params={(user, idx)}>
+	<p>[{ idx }] { user.name } { user.surname } ({ user.age })</p>
+</div>
+```
 
 ## The `rx-dynamic-prop` Directive
 

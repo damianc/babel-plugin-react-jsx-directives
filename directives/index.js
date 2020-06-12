@@ -7,6 +7,8 @@ const transformPartialStyleDirective = require('./partial-style.directive');
 const transformParamsDirective = require('./params.directive');
 const transformDynamicPropDirective = require('./dynamic-prop.directive');
 const transformDynamicEventDirective = require('./dynamic-event.directive');
+const transformShowDirective = require('./show.directive');
+const transformHideDirective = require('./hide.directive');
 
 module.exports = {
 	transformIfDirective,
@@ -17,5 +19,7 @@ module.exports = {
 	transformPartialStyleDirective,
 	transformParamsDirective,
 	transformDynamicPropDirective,
-	transformDynamicEventDirective
+	transformDynamicEventDirective,
+	transformShowDirective,
+	transformHideDirective,
 };
