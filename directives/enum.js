@@ -42,6 +42,12 @@ const Directive = {
 	},
 	get DYNAMIC_EVENT() {
 		return getDirectiveProp('dynamic-event');
+	},
+	get SHOW() {
+		return getDirectiveProp('show');
+	},
+	get HIDE() {
+		return getDirectiveProp('hide');
 	}
 };
 

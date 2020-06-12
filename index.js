@@ -65,6 +65,16 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasDirective(path.node, Directive.SHOW)) {
+					d.transformShowDirective(path, state);
+					return;
+				}
+
+				if (hasDirective(path.node, Directive.HIDE)) {
+					d.transformHideDirective(path, state);
+					return;
+				}
+
 			}
 		}
 	};
