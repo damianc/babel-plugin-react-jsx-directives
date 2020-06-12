@@ -5,7 +5,7 @@ const transformClassDirective = require('./class.directive');
 const transformPartialClassDirective = require('./partial-class.directive');
 const transformPartialStyleDirective = require('./partial-style.directive');
 const transformParamsDirective = require('./params.directive');
-// const transformDynamicPropDirective = require('./dynamic-prop.directive');
+const transformDynamicPropDirective = require('./dynamic-prop.directive');
 
 module.exports = {
 	transformIfDirective,
@@ -15,5 +15,5 @@ module.exports = {
 	transformPartialClassDirective,
 	transformPartialStyleDirective,
 	transformParamsDirective,
-	// transformDynamicPropDirective
+	transformDynamicPropDirective
 };

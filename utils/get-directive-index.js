@@ -1,11 +1,11 @@
 function getDirectiveIndex(attrsArr, directive) {
-	return attrsArr.findIndex(attr => attr.name.name === directive);
+	return attrsArr.findIndex(attr => attr.name && attr.name.name === directive);
 }
 
 function getPartialDirectiveIndex(attrsArr, directive) {
 	return attrsArr.findIndex(attr => {
 		let reDirectiveName = new RegExp('^' + directive + '.+$');
-		return reDirectiveName.test(attr.name.name);
+		return attr.name ? reDirectiveName.test(attr.name.name) : false;
 	});
 }
 

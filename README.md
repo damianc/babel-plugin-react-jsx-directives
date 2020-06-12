@@ -13,6 +13,7 @@ Babel plugin that carries directives to React JSX:
 * `rx-class`
 * `rx-class-*`
 * `rx-style-*`
+* `rx-dynamic-prop`
 
 ## Installation
 
@@ -134,3 +135,13 @@ The directive allows omitting callback when using render props.
 ```
 
 > A unit can be specified if a value of the directive is just a string rather than expression.
+
+## The `rx-dynamic-prop` Directive
+
+```
+<div rx-dynamic-prop={[propToBind, valueForProp]}>
+	...
+</div>
+```
+
+> It's like `:[propToBind]="valueForProp"` directive known from the Vue framework.
