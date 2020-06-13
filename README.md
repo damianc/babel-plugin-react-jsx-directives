@@ -5,19 +5,18 @@
 ![high usability](https://img.shields.io/badge/usability-%E2%98%85%20high-fa0)
 
 Babel plugin that carries directives to React JSX:
-* [`rx-if`](#the-rx-if-directive)
-* [`rx-if / rx-else (rx-elseif)`](#the-rx-if-directive)
-* [`rx-show`](#the-rx-show-directive)
-* [`rx-hide`](#the-rx-hide-directive)
-* [`rx-for`](#the-rx-for-directive)
-* [`rx-switch / rx-case (rx-default)`](#the-rx-switch-directive)
-* [`rx-class`](#the-rx-class-directive)
-* [`rx-class-*`](#the-rx-class--directive)
-* [`rx-style-*`](#the-rx-style--directive)
-* [`rx-model`](#the-rx-model-directive)
-* [`rx-params`](#the-rx-params-directive)
-* [`rx-dynamic-prop`](#the-rx-dynamic-prop-directive)
-* [`rx-dynamic-event`](#the-rx-dynamic-event-directive)
+* [`$if`](#the-if-directive)
+* [`$show`](#the-show-directive)
+* [`$hide`](#the-hide-directive)
+* [`$for`](#the-for-directive)
+* [`$switch`](#the-switch-directive)
+* [`$class`](#the-class-directive)
+* [`$class-*`](#the-class--directive)
+* [`$style-*`](#the-style--directive)
+* [`$model`](#the-model-directive)
+* [`$params`](#the-params-directive)
+* [`$dynamic-prop`](#the-dynamic-prop-directive)
+* [`$dynamic-event`](#the-dynamic-event-directive)
 
 ## Installation
 
@@ -27,53 +26,59 @@ npm i babel-plugin-react-jsx-directives
 
 ### Options
 
-| Option | Type | Description |
-|--------|------|-------------|
-| `prefix` | string | A prefix directives are preceded with; must consist of one or more lowercase characters. |
+| Option | Type | Description | Default value |
+|--------|------|-------------|---------------|
+| `prefix` | string | A prefix directives are preceded with; must consist of one or more lowercase characters, plus can contain `$` char(s). | `$` |
+| `prefixSeparation` | boolean | Whether a prefix and directive name should be separated with the `-` character. | `false` |
 
 #### Change of the Prefix
 
+Replace the default `$` prefix with `x-`, so e.g., `$if` becomes `x-if`:
+
 ```
 plugins: [
-	['babel-plugin-react-jsx-directives', { prefix: 'x' }]
+	['babel-plugin-react-jsx-directives', {
+		prefix: 'x',
+		prefixSeparation: true
+	}]
 ]
 ```
 
-## The `rx-if` Directive
+## The `$if` Directive
 
 ```
-<p rx-if={this.state.status == 'available'}>
+<p $if={this.state.status == 'available'}>
 	I'm available
 </p>
-<p rx-elseif={this.state.status == 'busy'}>
+<p $elseif={this.state.status == 'busy'}>
 	I'm busy now
 </p>
-<p rx-else>
+<p $else>
 	I'm certainly AFK
 </p>
 ```
 
-## The `rx-show` Directive
+## The `$show` Directive
 
 ```
-<div rx-show={operationPerformed}>
+<div $show={operationPerformed}>
 	Operation has finished successfully.
 </div>
 ```
 
-## The `rx-hide` Directive
+## The `$hide` Directive
 
 ```
-<div rx-hide={errors.length === 0}>
+<div $hide={errors.length === 0}>
 	form contains errors
 </div>
 ```
 
-## The `rx-for` Directive
+## The `$for` Directive
 
 ```
 <ul>
-	<li rx-for={(book, idx) in this.state.books}
+	<li $for={(book, idx) in this.state.books}
 		key={idx}
 	>
 		{idx + 1}. {book.title}
@@ -81,80 +86,79 @@ plugins: [
 </ul>
 ```
 
-## The `rx-switch` Directive
+## The `$switch` Directive
 
 ```
-<div rx-switch={this.state.n}>
-	<p rx-case={1}>1</p>
-	<p rx-case={2}>2</p>
-	<p rx-case={3}>3</p>
-	<p rx-default>?</p>
+<div $switch={this.state.n}>
+	<p $case={1}>one</p>
+	<p $case={2}>two</p>
+	<p $case={3}>three</p>
+	<p $default>?</p>
 </div>
 ```
 
-## The `rx-class` Directive
+## The `$class` Directive
 
 ```
 <div className="box"
-	rx-class={{isError: this.state.isError, isOk: this.state.isOk}}
+	$class={{isError: this.state.isError, isOk: this.state.isOk}}
 >...</div>
 ```
 
-## The `rx-class-*` Directive
+## The `$class-*` Directive
 
 ```
 <div className="message"
-	rx-class-fullscreen={this.state.device == 'mobile'}
+	$class-fullscreen={this.state.device == 'mobile'}
 >...</div>
 ```
 
-## The `rx-style-*` Directive
+## The `$style-*` Directive
 
 ```
-<p rx-style-color={hasError ? 'red' : '#222'}>...</p>
+<p $style-color={hasError ? 'red' : '#222'}>...</p>
 ```
 
 ```
-<p rx-style-fontSize="20">...</p>
+<p $style-fontSize="20">...</p>
 ```
 
-> You can use `rx-style-font-size`, yet the plugin will turn it into `rx-style-fontSize`, eventually.
+> You can use `$style-font-size`, yet the plugin will turn it into `$style-fontSize`, eventually.
 
 * a unit can be specified:
 
 ```
-<p rx-style-margin_px="25">...</p>
+<p $style-margin_px="25">...</p>
 ```
 
 * use `percent` if a unit is meant to be `%`:
 
 ```
-<div rx-style-width_percent="75">...</div>
+<div $style-width_percent="75">...</div>
 ```
 
 > A unit can be specified if a value of the directive is just a string rather than expression.
 
-## The `rx-model` Directive
+## The `$model` Directive
 
 * the input below is connected to the `phrase` property of a component state:
 
 ```
-<input rx-model="phrase" />
+<input $model="phrase" />
 ```
 
 * and this one to the `accepted` property of the state:
 
 ```
-<input type="checkbox" rx-model="accepted" />
+<input type="checkbox" $model="accepted" />
 { this.state.accepted ? 'Accepted' : 'Not accepted' }
 ```
 
-
-## The `rx-params` Directive
+## The `$params` Directive
 
 The directive allows omitting callback when using render props.
 
-* instead of callback:
+* instead of a callback:
 
 ```
 <div user={this.state.user}>
@@ -164,30 +168,30 @@ The directive allows omitting callback when using render props.
 </div>
 ```
 
-* you can use `rx-params` directive:
+* you can use the `$params` directive:
 
 ```
-<div user={this.state.user} rx-params={(user, idx)}>
+<div user={this.state.user} $params={(user, idx)}>
 	<p>[{ idx }] { user.name } { user.surname } ({ user.age })</p>
 </div>
 ```
 
-## The `rx-dynamic-prop` Directive
+## The `$dynamic-prop` Directive
 
 ```
-<div rx-dynamic-prop={[propToBind, valueForProp]}>
+<div $dynamic-prop={[propToBind, valueForProp]}>
 	...
 </div>
 ```
 
-> It's like `:[propToBind]="valueForProp"` directive known from the Vue framework.
+> It's like `v-bind:[propToBind]="valueForProp"` directive known from the Vue framework.
 
-## The `rx-dynamic-event` Directive
+## The `$dynamic-event` Directive
 
 ```
-<div rx-dynamic-event={[eventToListen, eventsHandler]}>
+<div $dynamic-event={[eventToListen, eventsHandler]}>
 	...
 </div>
 ```
 
-> It's like `@[eventToListen]="eventsHandler"` directive known from the Vue framework.
+> It's like `v-on:[eventToListen]="eventsHandler"` directive known from the Vue framework.
