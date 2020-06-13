@@ -75,6 +75,11 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasDirective(path.node, Directive.MODEL)) {
+					d.transformModelDirective(path, state);
+					return;
+				}
+
 			}
 		}
 	};

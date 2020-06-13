@@ -14,6 +14,7 @@ Babel plugin that carries directives to React JSX:
 * [`rx-class`](#the-rx-class-directive)
 * [`rx-class-*`](#the-rx-class--directive)
 * [`rx-style-*`](#the-rx-style--directive)
+* [`rx-model`](#the-rx-model-directive)
 * [`rx-params`](#the-rx-params-directive)
 * [`rx-dynamic-prop`](#the-rx-dynamic-prop-directive)
 * [`rx-dynamic-event`](#the-rx-dynamic-event-directive)
@@ -132,6 +133,22 @@ plugins: [
 ```
 
 > A unit can be specified if a value of the directive is just a string rather than expression.
+
+## The `rx-model` Directive
+
+* the input below is connected to the `phrase` property of a component state:
+
+```
+<input rx-model="phrase" />
+```
+
+* and this one to the `accepted` property of the state:
+
+```
+<input type="checkbox" rx-model="accepted" />
+{ this.state.accepted ? 'Accepted' : 'Not accepted' }
+```
+
 
 ## The `rx-params` Directive
 

@@ -48,6 +48,9 @@ const Directive = {
 	},
 	get HIDE() {
 		return getDirectiveProp('hide');
+	},
+	get MODEL() {
+		return getDirectiveProp('model');
 	}
 };
 
