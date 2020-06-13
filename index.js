@@ -4,15 +4,19 @@ const Directive = require('./directives/enum');
 const { hasDirective, hasPartialDirective } = require('./utils');
 
 function directiveParser(_, opts) {
-	if (opts.prefix && opts.prefix != p.defaultPrefix) {
-		if (/^[a-z]+$/.test(opts.prefix)) {
+	if (opts.prefix && opts.prefix !== p.defaultPrefix) {
+		if (/^(\$|[a-z])+$/.test(opts.prefix)) {
 			p.setPrefix(opts.prefix);
 		} else {
 			throw new SyntaxError(
 				'Prefix option for Babel plugin react-jsx-directives' +
-				'should consist of one or more lowercase characters'
+				'should consist of one or more lowercase characters (including `$` character)'
 			);
 		}
+	}
+
+	if (typeof opts.prefixSeparation !== 'undefined' && opts.prefixSeparation !== p.defaultPrefixSeparation) {
+		p.setPrefixSeparation(!!opts.prefixSeparation);
 	}
 
 	return {

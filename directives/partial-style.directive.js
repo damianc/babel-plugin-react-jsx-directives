@@ -6,7 +6,9 @@ function transformPartialStyleDirective(path, state) {
 	let styleDirAttrs = path.node.openingElement.attributes;
 	let styleAttrIdx = u.getPartialDirectiveIndex(styleDirAttrs, Directive.STYLE);
 	let styleAttrName = styleDirAttrs[styleAttrIdx].name.name;
-	let [, stylePropName] = styleAttrName.match(new RegExp(Directive.STYLE + '-(.+)$'));
+	let [, stylePropName] = styleAttrName.match(new RegExp(
+		Directive.STYLE.replace('$', '\\$') + '-(.+)$'
+	));
 	let styleAttrValue = styleDirAttrs[styleAttrIdx];
 	let styleNameAttr = styleDirAttrs.find(prop => {
 		return prop.name.name == 'style';

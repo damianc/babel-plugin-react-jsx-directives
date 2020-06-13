@@ -1,11 +1,15 @@
 const p = require('../directives/prefix');
 
 function getDirectiveProp(directive) {
-	return p.getPrefix() + '-' + directive;
+	let separation = p.getPrefixSeparation();
+	let separator = separation ? '-' : '';
+	return p.getPrefix() + separator + directive;
 }
 
 function getPartialDirectiveProp(directive, suffix) {
-	return p.getPrefix() + '-' + directive + '-' + suffix;
+	let separation = p.getPrefixSeparation();
+	let separator = separation ? '-' : '';
+	return p.getPrefix() + separator + directive + '-' + suffix;
 }
 
 module.exports = {
