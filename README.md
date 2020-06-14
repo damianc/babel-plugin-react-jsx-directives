@@ -85,7 +85,7 @@ plugins: [
 
 ### `$hide` vs. `$hidden`
 
-* `$hide` - an element hidden by the `$hide` directive is not visible and takes no space on the space (it is done by CSS `display: none` setting)
+* `$hide` - an element hidden by the `$hide` directive is not visible and takes no space on the page (it is done by CSS `display: none` setting)
 * `$hidden` - an element hidden by the `$hidden` directive is not visible on the page but does take space of the page as if it were displayed (it is done by CSS `visibility: hidden` setting)
 
 ## The `$for` Directive
