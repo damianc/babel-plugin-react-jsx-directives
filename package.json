@@ -6,7 +6,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/damianc/gulp-javascript-pl.git"
+    "url": "git+https://github.com/damianc/babel-plugin-react-jsx-directives.git"
   },
   "keywords": [
     "babel",
