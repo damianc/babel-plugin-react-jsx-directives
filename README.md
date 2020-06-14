@@ -8,6 +8,7 @@ Babel plugin that carries directives to React JSX:
 * [`$if`](#the-if-directive)
 * [`$show`](#the-show-directive)
 * [`$hide`](#the-hide-directive)
+* [`$hidden`](#the-hidden-directive)
 * [`$for`](#the-for-directive)
 * [`$switch`](#the-switch-directive)
 * [`$class`](#the-class-directive)
@@ -73,6 +74,19 @@ plugins: [
 	form contains errors
 </div>
 ```
+
+## The `$hidden` Directive
+
+```
+<div $hidden={!show}>
+	<img src="..." />
+</div>
+```
+
+### `$hide` vs. `$hidden`
+
+* `$hide` - an element hidden by the `$hide` directive is not visible and takes no space on the space (it is done by CSS `display: none` setting)
+* `$hidden` - an element hidden by the `$hidden` directive is not visible on the page but does take space of the page as if it were displayed (it is done by CSS `visibility: hidden` setting)
 
 ## The `$for` Directive
 

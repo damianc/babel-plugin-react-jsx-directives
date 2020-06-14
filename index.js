@@ -79,6 +79,11 @@ function directiveParser(_, opts) {
 					return;
 				}
 
+				if (hasDirective(path.node, Directive.HIDDEN)) {
+					d.transformHiddenDirective(path, state);
+					return;
+				}
+
 				if (hasDirective(path.node, Directive.MODEL)) {
 					d.transformModelDirective(path, state);
 					return;
