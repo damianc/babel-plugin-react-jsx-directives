@@ -9,6 +9,7 @@ const transformDynamicPropDirective = require('./dynamic-prop.directive');
 const transformDynamicEventDirective = require('./dynamic-event.directive');
 const transformShowDirective = require('./show.directive');
 const transformHideDirective = require('./hide.directive');
+const transformHiddenDirective = require('./hidden.directive');
 const transformModelDirective = require('./model.directive');
 
 module.exports = {
@@ -23,5 +24,6 @@ module.exports = {
 	transformDynamicEventDirective,
 	transformShowDirective,
 	transformHideDirective,
+	transformHiddenDirective,
 	transformModelDirective
 };
