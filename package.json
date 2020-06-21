@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-jsx-directives",
-  "version": "1.13.1",
+  "version": "1.13.2",
   "description": "Babel plugin that carries directives to React JSX: `$if/$else`",
   "main": "index.js",
   "scripts": {},
