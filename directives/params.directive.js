@@ -32,7 +32,8 @@ function transformParamsDirective(path, state) {
 			path.node.openingElement.name.name,
 			paramsDirAttrs,
 			[t.jSXExpressionContainer(arrowCallback)],
-			[Directive.PARAMS]
+			[Directive.PARAMS],
+			path.node
 		)
 	);
 }

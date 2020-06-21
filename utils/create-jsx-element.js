@@ -1,9 +1,15 @@
 const t = require('babel-types');
 
-function createJSXElement(name, attrs, children, excludedAttrs) {
-	let elementIdentifier = t.jSXIdentifier(name);
-	let elementAttrs = attrs.slice();
+function createJSXElement(name, attrs, children, excludedAttrs, node = null) {
+	let elementIdentifier;
 
+	if (name) {
+		elementIdentifier = t.jSXIdentifier(name);
+	} else {
+		elementIdentifier = node && node.openingElement.name;
+	}
+
+	let elementAttrs = attrs.slice();
 	if (excludedAttrs) {
 		for (let attr of excludedAttrs) {
 			let attrIndex = elementAttrs.findIndex(a => {
